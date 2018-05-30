@@ -3,9 +3,8 @@ sudo: required
 before_install:
   - sudo apt-get -qq install wput sshpass
   - git clone https://github.com/XiaomiFirmwareUpdater/firmware_xiaomi_aqua.git -b stable $HOME/XFU/
+  - travis_wait 30 mvn install
   - cd $HOME/XFU/ && wget -q https://github.com/XiaomiFirmwareUpdater/mi-firmware-updater/raw/stable/script.sh
-
-install: travis_wait 30 mvn install
 
 script:
   - chmod +x device.sh && chmod +x script.sh
